@@ -43,11 +43,11 @@ const getStateFromProps = props => {
   return { current, display, total };
 };
 
-const Page = ({ value, isActive, onClick, styleButton, stylePrimary }) => {
+const Page = ({ value, isActive, onClick, styleButton, stylePrimary, activeColor }) => {
   return !styleButton ? (<FlatButton
     style = { flatButtonStyle }
     label = { value.toString() }
-    primary = { isActive }
+    labelStyle = { {color: isActive ? (activeColor || "grey") : "black"} }
     onClick = { onClick }
   />) : (<div
     style = { isActive ? stylePrimary : styleButton }
@@ -149,6 +149,7 @@ class Pagination extends React.Component {
                 onClick = { () => this.setCurrent(page) }
                 styleButton = { this.props.styleButton }
                 stylePrimary = { this.props.stylePrimary }
+                activeColor={this.props.activeColor}
               />
             ))
           }
@@ -178,6 +179,7 @@ Pagination.propTypes = {
   styleLastPageLink: PropTypes.object,
   styleButton: PropTypes.object,
   stylePrimary: PropTypes.object,
+	activeColor: PropTypes.string,
 };
 
 Pagination.defaultProps = {

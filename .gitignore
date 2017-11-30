@@ -51,3 +51,4 @@ dist/
 example/static/*.json
 example/static/*.map
 example/static/*.js
+.idea
